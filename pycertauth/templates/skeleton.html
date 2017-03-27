@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+    {% include 'header.html' %}
+<body>
+
+{% include 'menu.html' %}
+
+<div class="container-fluid">
+{% block body %}
+{% endblock %}
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>

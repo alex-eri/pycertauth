@@ -1,0 +1,9 @@
+# Игнорировать байткод
+*.pyc
+*.pyo
+
+__pycache__/
+**/__pycache__/
+**/data/
+**/config/
+**/logs/

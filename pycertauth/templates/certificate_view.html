@@ -1,0 +1,24 @@
+{% extends "skeleton.html" %}
+{% block body %}
+
+<div class="panel panel-default">
+<div class="panel-body">
+
+<div class="panel panel-default">
+<div class="panel-heading">Сертификат</div>
+<div class="panel-body">
+<pre>{{ pagedata['cert'] }}</pre>
+</div>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">Ключ</div>
+<div class="panel-body">
+<pre>{{pagedata['key'] }}</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+{% endblock %}

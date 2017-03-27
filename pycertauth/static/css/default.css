@@ -1,0 +1,56 @@
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 0.9em;
+    }
+    .panel-heading {
+        font-size: 0.9em;
+    }
+    .panel-body {
+        font-size: 0.9em;
+    }
+}
+
+/* sm */
+@media screen and (min-width: 768px) {
+    body {
+        font-size: 1em;
+    }
+    .panel-heading {
+        font-size: 1em;
+    }
+    .panel-body {
+        font-size: 1em;
+    }
+}
+
+/* md */
+@media screen and (min-width: 992px) {
+    body {
+        font-size: 1.2em;
+    }
+    .panel-heading {
+        font-size: 1.2em;
+    }
+    .panel-body {
+        font-size: 1.2em;
+    }
+}
+
+/* lg */
+@media screen and (min-width: 1200px) {
+    body {
+        font-size: 1.3em;
+    }
+    .panel-heading {
+        font-size: 1.3em;
+    }
+    .panel-body {
+        font-size: 1.3em;
+    }
+}
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: center;
+}
