@@ -1,10 +1,10 @@
-<div class="panel panel-default">
-<div class="panel-body">
-<p>Приложение «Центр сертификации» может быть использовано для генерации корневых сертификатов и подписи с их помощью серверных и клиентских сертификатов</p>
+<div class="card">
+<div class="card-body">
+<p>Приложение «Центр сертификации» может быть использовано для хранения сертификатов, а также для генерации корневых сертификатов и подписи с их помощью серверных и клиентских сертификатов</p>
 
-<div class="panel panel-default">
-<div class="panel-heading">Вспомогательные команды</div>
-<div class="panel-body">
+<div class="card">
+<div class="card-header">Вспомогательные команды</div>
+<div class="card-body">
 <p>Проверка корректности сертификата</p>
 
 <pre>openssl x509 -in cert.crt -text -noout</pre>
@@ -22,5 +22,6 @@ openssl req -noout -modulus -in cert.csr | openssl md5</pre>
 </div>
 </div>
 
+<p>Внешний ресурс для просмотра содержимого сертификата <a href="https://www.sslchecker.com/certdecoder" target="_blank">SSL Certificate Decoder</a></p>
 </div>
 </div>

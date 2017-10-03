@@ -1,0 +1,45 @@
+{% extends "skeleton.html" %}
+{% block body %}
+
+<div class="card">
+<div class="card-header">
+<a class="btn btn-outline-success btn-sm float-right" href="/certificate/add"><i class="fa fa-plus"></i></a>
+Список сертификатов</div>
+<div class="card-body">
+
+{% for certificate in pagedata['certificates'] %}
+<div class="row">
+<div class="col py-2 {{ loop.cycle('', 'bg-light')}}">
+
+<div class="float-right">
+<a class="btn btn-outline-secondary btn-sm" href="/certificate/{{ certificate.id }}/edit"><i class="fa fa-edit"></i></a>
+<a class="btn btn-outline-danger btn-sm" href="/certificate/{{ certificate.id }}/delete"><i class="fa fa-remove"></i></a>
+</div>
+
+{% if certificate.private %}
+<a class="btn btn-danger btn-sm" href="/certificate/{{ certificate.id }}/private"><i class="fa fa-key"></i></a>
+{% else %}
+<a class="btn btn-outline-danger btn-sm" href="/certificate/{{ certificate.id }}/private"><i class="fa fa-key"></i></a>
+{% endif %}
+
+{% if certificate.csr %}
+<a class="btn btn-warning btn-sm" href="/certificate/{{ certificate.id }}/csr"><i class="fa fa-long-arrow-right"></i></a>
+{% else %}
+<a class="btn btn-outline-warning btn-sm" href="/certificate/{{ certificate.id }}/csr"><i class="fa fa-long-arrow-right"></i></a>
+{% endif %}
+
+{% if certificate.public %}
+<a class="btn btn-success btn-sm" href="/certificate/{{ certificate.id }}/public"><i class="fa fa-key"></i></a>
+{% else %}
+<a class="btn btn-outline-success btn-sm" href="/certificate/{{ certificate.id }}/public"><i class="fa fa-key"></i></a>
+{% endif %}
+
+<a href="/certificate/{{ certificate.id }}">{{ certificate.name }}</a>
+</div>
+</div>
+{% endfor %}
+
+</div>
+</div>
+
+{% endblock %}

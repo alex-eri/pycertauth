@@ -1,1 +1,11 @@
-<a class="btn btn-default" href="/"><i class="fa fa-home"></i></a>
+{% extends "skeleton.html" %}
+{% block body %}
+
+<div class="card">
+<div class="card-body">
+<a class="btn btn-outline-secondary" href="/generateca">Сгенерировать самоподписанный сертификат</a>
+<a class="btn btn-outline-secondary" href="/certificate/add">Добавить сертификат</a>
+</div>
+</div>
+
+{% endblock %}
