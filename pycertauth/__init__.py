@@ -28,17 +28,8 @@ handler.setFormatter(formatter)
 app.logger.setLevel(logging.INFO) # root level's
 app.logger.addHandler(handler)
 
-# celery
-from celery import Celery
-
-celery = Celery(app.name,
-    broker=app.config['CELERY_BROKER_URL'],
-    backend=app.config['CELERY_RESULT_BACKEND'],
-    include=['helpdesk.tasks'])
-celery.conf.update(app.config)
-
-#from .bp_acl import bp_acl as acl_blueprint
-#app.register_blueprint(acl_blueprint, url_prefix='/acl')
+from .bp_certificate import bp_certificate as certificate_blueprint
+app.register_blueprint(certificate_blueprint, url_prefix='/certificate')
 
 #from .bp_user import bp_user as user_blueprint
 #app.register_blueprint(user_blueprint, url_prefix='/user')
