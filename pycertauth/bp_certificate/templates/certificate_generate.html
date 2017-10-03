@@ -1,0 +1,56 @@
+{% extends "skeleton.html" %}
+{% block body %}
+
+<div class="card">
+<div class="card-body">
+
+<form method="post" action="/certificate/{{ pagedata['certificate'].id }}/generate">
+
+<div class="row">
+<div class="form-group col-md-4">
+{{ pagedata['form'].C.label }}
+{{ pagedata['form'].C(class="form-control") }}
+</div>
+
+<div class="form-group col-md-4">
+{{ pagedata['form'].ST.label }}
+{{ pagedata['form'].ST(class="form-control") }}
+</div>
+
+<div class="form-group col-md-4">
+{{ pagedata['form'].L.label }}
+{{ pagedata['form'].L(class="form-control") }}
+</div>
+</div>
+
+<div class="row">
+<div class="form-group col-md-4">
+{{ pagedata['form'].O.label }}
+{{ pagedata['form'].O(class="form-control") }}
+</div>
+
+<div class="form-group col-md-4">
+{{ pagedata['form'].OU.label }}
+{{ pagedata['form'].OU(class="form-control") }}
+</div>
+
+<div class="form-group col-md-4">
+{{ pagedata['form'].CN.label }}
+{{ pagedata['form'].CN(class="form-control") }}
+</div>
+</div>
+
+<div class="row">
+<div class="form-group col-md-4">
+{{ pagedata['form'].emailAddress.label }}
+{{ pagedata['form'].emailAddress(class="form-control") }}
+</div>
+</div>
+
+<button class="btn btn-outline-success float-right">Генерировать</button>
+</form>
+
+</div>
+</div>
+
+{% endblock %}
