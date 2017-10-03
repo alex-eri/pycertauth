@@ -14,6 +14,6 @@ class NewCertificateForm(Form):
     ST = TextField('Край, область (ST)', render_kw={'placeholder': 'Москва'})
     L = TextField('Город (L)', render_kw={'placeholder': 'Москва'})
     O = TextField('Название организации (O)')
-    OU = TextField('Отдел (OU)')
+    OU = TextField('Отдел (OU)', render_kw={'placeholder': 'IT'})
     CN = TextField('Имя домена (CN)', render_kw={'placeholder': 'remizoffalex.ru'})
     emailAddress = TextField('Адрес электронной почты (emailAddress)')
