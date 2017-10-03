@@ -37,14 +37,36 @@ import datetime
 
 from sqlalchemy import and_, or_
 # RemiZOffAlex
-from . import app, lib, models, forms, tasks
+from . import app, lib, models, forms
 
 
 @app.route('/')
 def index():
-    pagedata = {'title': app.config['TITLE']}
+    """Главная страница"""
+    pagedata = {'title': ' - '.format(app.config['TITLE'])}
     body = render_template('index.html', pagedata=pagedata)
     return body
+
+
+@app.route('/certificates', defaults={'page': 1})
+@app.route('/certificates/<int:page>')
+def certificates(page):
+    """Список сертификатов"""
+    pagedata = {'title': 'Список сертификатов - '.format(app.config['TITLE'])}
+    pagedata['certificates'] = models.db_session.query(
+        models.Certificate
+    )
+    pagedata['pagination'] = lib.Pagination(
+        page,
+        10,
+        pagedata['certificates'].count()
+    )
+    pagedata['pagination'].url = '/certificates'
+    pagedata['certificates'] = lib.getpage(pagedata['certificates'], page)
+    pagedata['certificates'] = pagedata['certificates'].all()
+    body = render_template('certificates.html', pagedata=pagedata)
+    return body
+
 
 @app.route('/generateca', methods=['GET', 'POST'])
 def generateca():
@@ -76,12 +98,22 @@ def generateca():
         cert.set_pubkey(k)
         cert.sign(k, 'sha1')
         cert.sign(k, 'sha256')
+        cert.sign(k, 'sha512')
         pagedata['cert'] = crypto.dump_certificate(crypto.FILETYPE_PEM, cert).decode('utf-8')
         pagedata['key'] = crypto.dump_privatekey(crypto.FILETYPE_PEM, k).decode('utf-8')
         body = render_template('certificate_view.html', pagedata=pagedata)
         return body
     body = render_template('generateca.html', pagedata=pagedata)
     return body
+
+
+@app.route('/menu')
+def menu():
+    """Меню"""
+    pagedata = {'title': app.config['TITLE']}
+    body = render_template('menu.html', pagedata=pagedata)
+    return body
+
 
 # noinspection PyUnusedLocal
 @app.errorhandler(404)
