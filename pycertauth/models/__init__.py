@@ -14,7 +14,10 @@ from sqlalchemy_utils import database_exists, create_database
 
 from .. import app
 
-engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'], echo=False)
+engine = create_engine(
+    app.config['SQLALCHEMY_DATABASE_URI'],
+    echo=app.config['SQLDEBUG']
+)
 if not database_exists(engine.url):
     create_database(engine.url)
 
@@ -24,12 +27,11 @@ db_session = scoped_session(sessionmaker(autocommit=False,
 Base = declarative_base()
 Base.query = db_session.query_property()
 
-#from .user import User
+from .certificate import Certificate, Private, Public, CSR
 
 Base.metadata.create_all(engine)
 
 __all__ = [
     'db_session',
-    'User',
-    'ObjectPermission', 'UserPermission'
+    'Certificate', 'Private', 'Public', 'CSR'
 ]
